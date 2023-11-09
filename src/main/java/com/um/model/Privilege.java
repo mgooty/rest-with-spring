@@ -19,4 +19,6 @@ public class Privilege {
     @Column(nullable = false)
     private String description;
 
+    @Column
+    private Integer priority = 1;
 }
