@@ -3,20 +3,18 @@ package com.um.controller;
 import com.um.resource.PrivilegeResource;
 import com.um.service.PrivilegeService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/vm")
+@RequestMapping("/um")
 public class UserManagementController {
 
     @Resource
     private PrivilegeService privilegeService;
 
-    @GetMapping(value = "/test")
-    public void test(@RequestBody PrivilegeResource privilegeResource) {
+    @PostMapping(value = "/test")
+    public void test(@RequestBody @Valid PrivilegeResource privilegeResource) {
         privilegeService.create(privilegeResource);
     }
 }
