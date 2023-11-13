@@ -1,7 +1,7 @@
 package com.um.controller;
 
-import com.um.resource.PrivilegeResource;
-import com.um.service.PrivilegeService;
+import com.um.resource.UserResource;
+import com.um.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -14,16 +14,16 @@ import java.util.List;
 public class UserManagementController {
 
     @Resource
-    private PrivilegeService privilegeService;
+    private UserService userService;
 
-    @PostMapping(value = "/privileges")
+    @PostMapping(value = "/users")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid PrivilegeResource privilegeResource) {
-        privilegeService.create(privilegeResource);
+    public void create(@RequestBody @Valid UserResource userResource) {
+        userService.create(userResource);
     }
 
-    @GetMapping(value = "/privileges")
-    public List<PrivilegeResource> getAll() {
-        return privilegeService.getAll();
+    @GetMapping(value = "/users")
+    public List<UserResource> getAll() {
+        return userService.getAll();
     }
 }
