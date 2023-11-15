@@ -10,20 +10,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/um")
+@RequestMapping("/um/users")
 public class UserManagementController {
 
     @Resource
     private UserService userService;
 
-    @PostMapping(value = "/users")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody @Valid UserResource userResource) {
         userService.create(userResource);
     }
 
-    @GetMapping(value = "/users")
+    @GetMapping
     public List<UserResource> getAll() {
         return userService.getAll();
+    }
+
+    @GetMapping(value = "/greetings", produces = "application/json;charset=utf-8")
+    public String greetings() {
+        return userService.greetings();
     }
 }
