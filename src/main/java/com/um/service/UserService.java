@@ -44,4 +44,9 @@ public class UserService {
         Locale locale = LocaleContextHolder.getLocale();
         return messageSource.getMessage("user.greetings.message", null, locale);
     }
+
+    public UserResource get(Long id) {
+        User user = repository.findById(id).orElseThrow();
+        return new UserResource(user.getName(), user.getEmail(), user.getBirthDate());
+    }
 }
