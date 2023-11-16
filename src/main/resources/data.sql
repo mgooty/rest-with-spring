@@ -1,0 +1,1 @@
+INSERT INTO public.users (id, birth_date, email, "name") VALUES(10000001, '2000-11-14', 'test1@gmail.com', 'ira');
